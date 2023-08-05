@@ -13,10 +13,16 @@ export class UserService {
     }
 
     static async addNewUser(userData) {
+        function isEmailValid(email: string): boolean {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailRegex.test(email);
+          }
         if (!userData.firstName) {
             return { success: false, message: 'First Name Not Present' }
         } else if (!userData.email) {
             return { success: false, message: 'email Not Present' }
+        }else if(isEmailValid(userData.email)){
+            return { success: false, message: 'email Format Invalid' }
         } else if (!userData.password) {
             return { success: false, message: 'password Not Present' }
         } else {

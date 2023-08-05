@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { UserService } from "../service/userService";
 
-export const getUser = (req: Request, res: Response) => {
+export const getUser = async(req: Request, res: Response) => {
     try {
-        const books = UserService.getAllUsers();
+        const books = await UserService.getAllUsers();
         return res.status(200).json({success: true, data: books});
         
     } catch (error) {
@@ -11,10 +11,10 @@ export const getUser = (req: Request, res: Response) => {
         
     }
 };
-export const getUserById = (req: Request, res: Response) => {
+export const getUserById = async(req: Request, res: Response) => {
     try {
         const id = parseInt(req.params.id);
-        const users = UserService.getUserById(id);
+        const users = await UserService.getUserById(id);
         return res.status(200).json({success: true, data: users});
         
     } catch (error) {

@@ -1,3 +1,4 @@
+import { BookEntity } from "../entity/bookEntity";
 import { CartEntity } from "../entity/cartEntity";
 
 const cart: CartEntity[] = [];
@@ -5,7 +6,17 @@ const cart: CartEntity[] = [];
 export class CartRepository {
 
     static getUserCart(id) {
-        return cart.find((cart) => cart.id === id);
+        let getCart = CartEntity.findOne({
+            where: {
+                userId: id
+            },
+            attributes: ["id", "price", "discountRate"],
+            include: [{
+                model: BookEntity,
+                attributes: ["id", "coverImage", "title", "description", "price", "discountRate"]
+            }]
+        })
+        return getCart
     }
 
     static addToCart(cartData) {
@@ -20,7 +31,8 @@ export class CartRepository {
     }
 
     static removeFromCart(id) {
-        CartEntity.destroy(id)
+        let res = CartEntity.destroy(id)
+        return res
     }
 
 }

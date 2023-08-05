@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { BookService } from "../service/bookService";
 
-export const getBooks = (req: Request, res: Response) => {
+export const getBooks = async(req: Request, res: Response) => {
     try {
-        const books = BookService.getAllBooks();
+        const books = await BookService.getAllBooks();
         return res.status(200).json({success: true, data: books});
         
     } catch (error) {

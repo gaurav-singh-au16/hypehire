@@ -4,11 +4,20 @@ const books: BookEntity[] = [];
 
 export class BookRepository {
   static getAllBooks() {
-    return books;
+    let getBook = BookEntity.findAll({
+      attributes: ["id", "title", "description", "discountRate", "price", "discountRate"]
+    })
+    return getBook;
   }
 
   static getBookById(id) {
-    return books.find((book) => book.id === id);
+    let getBook = BookEntity.findOne({
+      where: {
+        id: id
+      },
+      attributes: ["id", "title", "description", "discountRate", "price", "discountRate"]
+    })
+    return getBook
   }
 
   static addNewBook(bookData) {

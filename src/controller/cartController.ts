@@ -35,10 +35,10 @@ export const addCart = async(req: Request, res: Response) => {
     }
 };
 
-export const removeCart = (req: Request, res: Response) => {
+export const removeCart = async (req: Request, res: Response) => {
     try {
         const id = parseInt(req.params.id);
-        const cart = CartService.removeFromCart(id);
+        const cart = await CartService.removeFromCart(id);
         return res.status(200).json({success: true, data: cart});
         
     } catch (error) {

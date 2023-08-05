@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { OrderService } from "../service/orderService";
 
-export const getOrder = (req: Request, res: Response) => {
+export const getOrder = async(req: Request, res: Response) => {
     try {
-        const order = OrderService.getAllOrder();
+        const order = await OrderService.getAllOrder();
         return res.status(200).json({success: true, data: order});
         
     } catch (error) {

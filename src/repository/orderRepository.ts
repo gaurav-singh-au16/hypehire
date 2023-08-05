@@ -1,3 +1,4 @@
+import { BookEntity } from "../entity/bookEntity";
 import { CartEntity } from "../entity/cartEntity";
 import { orderEntity } from "../entity/orderEntity";
 import { uuid } from 'uuidv4';
@@ -8,7 +9,22 @@ const order: orderEntity[] = [];
 export class OrderRepository {
 
     static getAllOrder() {
-        return order;
+        let getOrder = orderEntity.findAll({
+            attributes: ["id", "cartId", "transctionId"],
+            include: [
+                {
+                    model: CartEntity,
+                    attributes: ["id", "price", "discountRate"],
+                    include: [
+                        {
+                            model: BookEntity,
+                            include: ["id", "title", "description", "coverImage"]
+                        }
+                    ]
+                }
+            ]
+        })
+        return getOrder;
     }
 
     static addNewOrder(orderData) {
