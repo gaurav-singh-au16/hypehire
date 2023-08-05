@@ -13,7 +13,7 @@ interface CartType {
     deletedAt?: Date;
 }
 
-class Cart extends Model<CartType>{
+class CartEntity extends Model<CartType>{
     public id!: BigInt
     public bookId!: BigInt
     public userId!: BigInt
@@ -25,7 +25,7 @@ class Cart extends Model<CartType>{
     public readonly deletedAt!: Date;
 }
 
-Cart.init({
+CartEntity.init({
     id: {
         type: DataTypes.BIGINT,
         autoIncrement: true,
@@ -51,7 +51,8 @@ Cart.init({
     status: {
         type: DataTypes.TINYINT,
         allowNull: false,
-        comment: '0--> not yet purchased, 1--> purchased'
+        comment: '0--> not yet purchased, 1--> purchased',
+        defaultValue: 0
     },
 },
     {
@@ -61,5 +62,5 @@ Cart.init({
         tableName: "cart",
     })
 
-export { CartType, Cart }
+export { CartType, CartEntity }
 
