@@ -3,7 +3,7 @@ import { OrderService } from "../service/orderService";
 
 export const getOrder = (req: Request, res: Response) => {
     try {
-        const order = OrderService.getAllOrders();
+        const order = OrderService.getAllOrder();
         return res.status(200).json({success: true, data: order});
         
     } catch (error) {
@@ -12,11 +12,15 @@ export const getOrder = (req: Request, res: Response) => {
     }
 };
 
-export const addOrder = (req: Request, res: Response) => {
+export const addOrder = async(req: Request, res: Response) => {
     try {
         let orderData = req.body
-        const order = OrderService.adNewOrders(orderData);
-        return res.status(200).json({success: true, data: orderData});
+        const order = await OrderService.addNewOrder(orderData);
+        if(order.success){
+            return res.status(200).json({success: true, data: order});
+        }else{
+            return res.status(404).json({success: true, data: order, message: order['message']});
+        }
         
     } catch (error) {
         return res.status(500).json({success: false, data: error, message: "Error!" });

@@ -14,6 +14,7 @@ export class CartRepository {
             userId: cartData.userId,
             discountRate: cartData.discountRate,
             price: cartData.price,
+            status: 0
         })
         return {success: true, data: res}
     }

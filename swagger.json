@@ -89,11 +89,11 @@
                 "type": "object",
                 "properties": {
                   "userId": {
-                    "type": "BigInt",
+                    "type": "number",
                     "description": "user id of User"
                   },
                   "bookId": {
-                    "type": "BigInt",
+                    "type": "number",
                     "description": "id of Book"
                   },
                   "discountRate": {
@@ -145,6 +145,54 @@
         "responses": {
           "200": {
             "description": "Item Removed From Cart"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/api/orders": {
+      "get": {
+        "summary": "Get all orders",
+        "responses": {
+          "200": {
+            "description": "All Orders successfully retrieved."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/api/buy-books": {
+      "post": {
+        "summary": "Buy Books",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cartId": {
+                    "type": "number",
+                    "description": "Cart id From User Cart"
+                  }
+                },
+                "required": [
+                  "cartId"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successfully Add To Order."
+          },
+          "404": {
+            "description": "Required Field Not Found"
           },
           "500": {
             "description": "Internal server error."

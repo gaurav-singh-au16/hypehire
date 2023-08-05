@@ -10,7 +10,7 @@ interface OrderType {
     deletedAt?: Date;
 }
 
-class Order extends Model<OrderType>{
+class orderEntity extends Model<OrderType>{
     public id!: BigInt
     public cartId!: BigInt
     public transctionId!: string;
@@ -19,7 +19,7 @@ class Order extends Model<OrderType>{
     public readonly deletedAt!: Date;
 }
 
-Order.init({
+orderEntity.init({
     id: {
         type: DataTypes.BIGINT,
         autoIncrement: true,
@@ -42,5 +42,5 @@ Order.init({
         tableName: "orders",
     })
 
-export { OrderType, Order }
+export { OrderType, orderEntity }
 

@@ -7,7 +7,7 @@ interface CartType {
     userId: BigInt;
     discountRate: Number;
     price: Number;
-    status: Enumerator;
+    status: Number;
     createdAt?: Date;
     updatedAt?: Date;
     deletedAt?: Date;
@@ -19,7 +19,7 @@ class CartEntity extends Model<CartType>{
     public userId!: BigInt
     public discountRate!: Number;
     public price!: Number;
-    public status!: Enumerator;
+    public status!: Number;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
     public readonly deletedAt!: Date;

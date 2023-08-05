@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { getBookById, getBooks } from "../controller/bookController";
 import { addCart, getUserCart, removeCart } from "../controller/cartController";
+import { addOrder, getOrder } from "../controller/orderController";
 
 const route = Router();
 
@@ -13,6 +14,9 @@ route.get('/api/get-user-cart/:userId',  getUserCart)
 route.post('/api/add-cart', addCart)
 route.get('/api/remove-cart-item/:id', removeCart)
 
+// order
+route.get('/api/orders', getOrder)
+route.post('/api/buy-books', addOrder)
 
 
 
