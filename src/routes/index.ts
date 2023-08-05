@@ -19,7 +19,7 @@ route.post('/api/add-books', addBook)
 // cart
 route.get('/api/get-user-cart/:userId',  getUserCart)
 route.post('/api/add-cart', addCart)
-route.get('/api/remove-cart-item/:id', removeCart)
+route.delete('/api/remove-cart-item/:id', removeCart)
 
 // order
 route.get('/api/orders', getOrder)

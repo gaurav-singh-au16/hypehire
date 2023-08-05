@@ -272,7 +272,7 @@
       }
     },
     "/api/remove-cart-item/{id}": {
-      "get": {
+      "delete": {
         "summary": "Remove Item From Cart With Item ID",
         "parameters": [
           {
