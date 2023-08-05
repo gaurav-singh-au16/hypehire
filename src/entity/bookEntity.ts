@@ -50,7 +50,7 @@ BookEntity.init({
     },
     coverImage: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     }
 },
     {

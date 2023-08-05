@@ -3,8 +3,8 @@ import db from '../config/database';
 
 interface UserType {
     id: BigInt;
-    first_name: string;
-    last_name: string;
+    firstName: string;
+    lastName: string;
     email: string;
     password: string;
     createdAt?: Date;
@@ -12,10 +12,10 @@ interface UserType {
     deletedAt?: Date;
 }
 
-class User extends Model<UserType>{
+class UserEntity extends Model<UserType>{
     public id!: BigInt
-    public first_name!: string;
-    public last_name!: string;
+    public firstName!: string;
+    public lastName!: string;
     public email!: string;
     public password!: string;
     public readonly createdAt!: Date;
@@ -23,18 +23,18 @@ class User extends Model<UserType>{
     public readonly deletedAt!: Date;
 }
 
-User.init({
+UserEntity.init({
     id: {
         type: DataTypes.BIGINT,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
     },
-    first_name: {
+    firstName: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
-    last_name: {
+    lastName: {
         type: DataTypes.STRING,
         allowNull: true
     },
@@ -56,4 +56,4 @@ User.init({
         tableName: "users",
     })
 
-export { UserType, User }
+export { UserType, UserEntity }

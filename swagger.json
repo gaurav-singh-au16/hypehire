@@ -11,6 +11,95 @@
     }
   ],
   "paths": {
+    "/api/users": {
+      "get": {
+        "summary": "Get all Users",
+        "responses": {
+          "200": {
+            "description": "List of all Users successfully retrieved."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "summary": "Get a user by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the user to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User details successfully retrieved."
+          },
+          "404": {
+            "description": "user not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/api/add-users": {
+      "post": {
+        "summary": "Add New Users",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "description": "First Name of User"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "description": "Last Name of User"
+                  },
+                  "email": {
+                    "type": "email",
+                    "description": "Email Of User"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "password For User"
+                  }
+                },
+                "required": [
+                  "firstName",
+                  "email",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Added successfully."
+          },
+          "404": {
+            "description": "Required Field Not Found"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
     "/api/books": {
       "get": {
         "summary": "Get all books",
@@ -51,6 +140,60 @@
         }
       }
     },
+    "/api/add-books": {
+      "post": {
+        "summary": "Add New Books",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "title of book"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "description of Book"
+                  },
+                  "discountRate": {
+                    "type": "number",
+                    "description": "discount Rate of the book from 1-99"
+                  },
+                  "price": {
+                    "type": "number",
+                    "description": "Price of the book"
+                  },
+                  "coverImage": {
+                    "type": "string",
+                    "description": "Cover Image URL of the book"
+                  }
+                },
+                "required": [
+                  "title",
+                  "description",
+                  "discountRate",
+                  "price"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Book Added successfully."
+          },
+          "404": {
+            "description": "Required Field Not Found"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
     "/api/get-cart/{userId}": {
       "get": {
         "summary": "Get a user cart by user ID",
@@ -80,7 +223,7 @@
     },
     "/api/add-cart": {
       "post": {
-        "summary": "Add Books To Cart",
+        "summary": "Add Items To Cart",
         "requestBody": {
           "required": true,
           "content": {
