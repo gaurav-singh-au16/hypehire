@@ -1,56 +1,156 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "title": "Books API",
-      "version": "1.0.0",
-      "description": "API for buying books and managing the books."
-    },
-    "servers": [
-      {
-        "url": "http://localhost:3000"
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Books API",
+    "version": "1.0.0",
+    "description": "API for buying books and managing the books."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/api/books": {
+      "get": {
+        "summary": "Get all books",
+        "responses": {
+          "200": {
+            "description": "List of all books successfully retrieved."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
       }
-    ],
-    "paths": {
-        "/api/books": {
-            "get": {
-              "summary": "Get all books",
-              "responses": {
-                "200": {
-                  "description": "List of all books successfully retrieved."
+    },
+    "/api/books/{id}": {
+      "get": {
+        "summary": "Get a book by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the book to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book details successfully retrieved."
+          },
+          "404": {
+            "description": "Book not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/api/get-cart/{userId}": {
+      "get": {
+        "summary": "Get a user cart by user ID",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "ID of the user to retrieve cart",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cart successfully retrieved."
+          },
+          "404": {
+            "description": "No Item In Cart."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/api/add-cart": {
+      "post": {
+        "summary": "Add Books To Cart",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "BigInt",
+                    "description": "user id of User"
+                  },
+                  "bookId": {
+                    "type": "BigInt",
+                    "description": "id of Book"
+                  },
+                  "discountRate": {
+                    "type": "number",
+                    "description": "discount Rate of the book from 1-99"
+                  },
+                  "price": {
+                    "type": "number",
+                    "description": "Price of the book"
+                  }
                 },
-                "500": {
-                  "description": "Internal server error."
-                }
+                "required": [
+                  "userId",
+                  "bookId",
+                  "discountRate",
+                  "price"
+                ]
               }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successfully Added To Cart."
           },
-        "/api/books/{id}": {
-            "get": {
-            "summary": "Get a book by ID",
-            "parameters": [
-                {
-                "name": "id",
-                "in": "path",
-                "description": "ID of the book to retrieve",
-                "required": true,
-                "schema": {
-                    "type": "integer"
-                }
-                }
-            ],
-            "responses": {
-                "200": {
-                "description": "Book details successfully retrieved."
-                },
-                "404": {
-                "description": "Book not found."
-                },
-                "500": {
-                "description": "Internal server error."
-                }
-            }
-            }
+          "404": {
+            "description": "Required Field Not Found"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
         }
+      }
+    },
+    "/api/remove-cart-item/{id}": {
+      "get": {
+        "summary": "Remove Item From Cart With Item ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the book to Remove",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Item Removed From Cart"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
     }
   }
-  
+}

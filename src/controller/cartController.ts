@@ -3,8 +3,8 @@ import { CartService } from "../service/cartService";
 
 export const getUserCart = async(req: Request, res: Response) => {
     try {
-        let id = parseInt(req.params.id)
-        const cart = await CartService.getUserCart(id);
+        let userId = parseInt(req.params.userId)
+        const cart = await CartService.getUserCart(userId);
         if(cart){
             return res.status(200).json({success: true, data: cart});
 
@@ -26,7 +26,7 @@ export const addCart = async(req: Request, res: Response) => {
         if(cart.success){
             return res.status(200).json({success: true, data: cart});
         }else{
-            return res.status(500).json({success: true, data: null, message: cart['message']});
+            return res.status(404).json({success: true, data: null, message: cart['message']});
         }
         
     } catch (error) {
