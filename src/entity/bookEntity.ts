@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/database'
+import { CartEntity } from './cartEntity';
 
 interface BookType {
     id: BigInt;
@@ -62,3 +63,6 @@ BookEntity.init({
 
 export { BookType, BookEntity }
 
+CartEntity.belongsTo(BookEntity, { foreignKey: 'bookId' })
+
+BookEntity.hasMany(CartEntity, { foreignKey: 'bookId' })

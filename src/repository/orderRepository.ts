@@ -15,12 +15,6 @@ export class OrderRepository {
                 {
                     model: CartEntity,
                     attributes: ["id", "price", "discountRate"],
-                    include: [
-                        {
-                            model: BookEntity,
-                            include: ["id", "title", "description", "coverImage"]
-                        }
-                    ]
                 }
             ]
         })

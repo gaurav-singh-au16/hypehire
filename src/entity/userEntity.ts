@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/database';
+import { CartEntity } from './cartEntity';
 
 interface UserType {
     id: BigInt;
@@ -57,3 +58,7 @@ UserEntity.init({
     })
 
 export { UserType, UserEntity }
+
+CartEntity.belongsTo(UserEntity, { foreignKey: 'userId' })
+
+UserEntity.hasMany(CartEntity, { foreignKey: 'userId' })

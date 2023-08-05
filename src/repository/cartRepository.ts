@@ -6,9 +6,10 @@ const cart: CartEntity[] = [];
 export class CartRepository {
 
     static getUserCart(id) {
-        let getCart = CartEntity.findOne({
+        let getCart = CartEntity.findAll({
             where: {
-                userId: id
+                userId: id,
+                status: 0
             },
             attributes: ["id", "price", "discountRate"],
             include: [{
@@ -31,7 +32,9 @@ export class CartRepository {
     }
 
     static removeFromCart(id) {
-        let res = CartEntity.destroy(id)
+        let res = CartEntity.destroy({
+            where: {id: id}
+        })
         return res
     }
 

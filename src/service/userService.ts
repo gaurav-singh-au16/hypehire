@@ -21,7 +21,7 @@ export class UserService {
             return { success: false, message: 'First Name Not Present' }
         } else if (!userData.email) {
             return { success: false, message: 'email Not Present' }
-        }else if(isEmailValid(userData.email)){
+        }else if(!isEmailValid(userData.email)){
             return { success: false, message: 'email Format Invalid' }
         } else if (!userData.password) {
             return { success: false, message: 'password Not Present' }

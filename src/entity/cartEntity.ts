@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/database'
+import { orderEntity } from './orderEntity';
 
 interface CartType {
     id: BigInt;
@@ -64,3 +65,7 @@ CartEntity.init({
 
 export { CartType, CartEntity }
 
+
+orderEntity.belongsTo(CartEntity, { foreignKey: 'cartId' })
+
+CartEntity.hasMany(orderEntity, { foreignKey: 'cartId' })

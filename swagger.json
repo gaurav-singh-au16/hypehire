@@ -194,7 +194,7 @@
         }
       }
     },
-    "/api/get-cart/{userId}": {
+    "/api/get-user-cart/{userId}": {
       "get": {
         "summary": "Get a user cart by user ID",
         "parameters": [
