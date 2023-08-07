@@ -5,13 +5,19 @@ import router from './routes'
 import swaggerUi from 'swagger-ui-express';
 import * as swaggerDocument from '../swagger.json';
 
+
 const app = express();
 const port = 3000;
+
+const CSS_URL =
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
+
+
 
 app.use(express.json());
 app.use(cors());
 app.use(router);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { customCssUrl: CSS_URL }));
 
 
 
