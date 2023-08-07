@@ -26,8 +26,5 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
     "uuidv4": "^6.2.13"
-  },
-  "engines": {
-    "node": "12.16.3"
   }
 }
