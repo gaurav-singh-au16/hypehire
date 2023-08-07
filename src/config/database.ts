@@ -13,6 +13,7 @@ dotenv.config()
 //   host: process.env.DB_HOST 
 
 // })
-const db = new Sequelize(process.env.POSTGRES_URL+ "?sslmode=require")
+const db = new Sequelize(process.env.POSTGRES_URL+ "?sslmode=require", {
+  dialectModule: require('pg')})
 
 export default db;
