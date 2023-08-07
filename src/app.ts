@@ -22,6 +22,9 @@ Connection.sync({ alter: true }).then(() => {
     console.log("Err", err);
 });
 
+app.get('/', (req, res) =>{
+  res.json({success: true, message: 'visit /api-docs route for more'})
+})
 
 app.listen(port, () => {
   return console.log(`server started @ ${port}`);
