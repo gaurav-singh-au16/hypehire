@@ -26,7 +26,7 @@ export const addCart = async(req: Request, res: Response) => {
         if(cart.success){
             return res.status(200).json({success: true, data: cart});
         }else{
-            return res.status(404).json({success: true, data: null, message: cart['message']});
+            return res.status(404).json({success: true, data: cart});
         }
         
     } catch (error) {

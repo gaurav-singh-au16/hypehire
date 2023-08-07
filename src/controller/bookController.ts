@@ -34,7 +34,7 @@ export const addBook = async(req: Request, res: Response) => {
         if(book.success){
             return res.status(200).json({success: true, data: book});
         }else{
-            return res.status(404).json({success: true, data: null, message: book['message']});
+            return res.status(404).json({success: true, data: book});
         }
         
     } catch (error) {

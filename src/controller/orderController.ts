@@ -19,7 +19,7 @@ export const addOrder = async(req: Request, res: Response) => {
         if(order.success){
             return res.status(200).json({success: true, data: order});
         }else{
-            return res.status(404).json({success: true, data: order, message: order['message']});
+            return res.status(404).json({success: true, data: order});
         }
         
     } catch (error) {

@@ -30,7 +30,7 @@ export const addNewUser = async(req: Request, res: Response) => {
         if(user.success){
             return res.status(200).json({success: true, data: user});
         }else{
-            return res.status(404).json({success: true, data: user, message: user['message']});
+            return res.status(404).json({success: true, data: user});
         }
         
     } catch (error) {

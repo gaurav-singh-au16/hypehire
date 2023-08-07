@@ -10,7 +10,7 @@ export class BookRepository {
     return getBook;
   }
 
-  static getBookById(id) {
+  static getBookById(id: number) {
     let getBook = BookEntity.findOne({
       where: {
         id: id
@@ -20,7 +20,7 @@ export class BookRepository {
     return getBook
   }
 
-  static addNewBook(bookData) {
+  static addNewBook(bookData: { title: string; description: string; discountRate: number; price: number; coverImage: string; }) {
     let res = BookEntity.create({
         title: bookData.title,
         description: bookData.description,

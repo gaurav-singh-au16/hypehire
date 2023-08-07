@@ -8,11 +8,11 @@ export class UserService {
         return await UserRepository.getAllUsers();
     }
 
-    static async getUserById(id: Number) {
+    static async getUserById(id: number) {
         return await UserRepository.getUserById(id);
     }
 
-    static async addNewUser(userData) {
+    static async addNewUser(userData: { firstName: string; email: string; password: string; lastName: string; }) {
         function isEmailValid(email: string): boolean {
             const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             return emailRegex.test(email);

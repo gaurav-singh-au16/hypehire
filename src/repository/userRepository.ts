@@ -10,7 +10,7 @@ export class UserRepository {
     return user;
   }
 
-  static getUserById(id) {
+  static getUserById(id: number) {
     let user = UserEntity.findOne({
       where: { id: id },
       attributes: ["id", "firstName", "lastName", "email"]
@@ -18,7 +18,7 @@ export class UserRepository {
     return user
   }
 
-  static addNewUser(userData) {
+  static addNewUser(userData: { firstName: string; lastName: string; email: string; password: string; }) {
     let res = UserEntity.create({
       firstName: userData.firstName,
       lastName: userData.lastName,

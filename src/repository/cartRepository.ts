@@ -5,7 +5,7 @@ const cart: CartEntity[] = [];
 
 export class CartRepository {
 
-    static getUserCart(id) {
+    static getUserCart(id: number) {
         let getCart = CartEntity.findAll({
             where: {
                 userId: id,
@@ -20,7 +20,7 @@ export class CartRepository {
         return getCart
     }
 
-    static addToCart(cartData) {
+    static addToCart(cartData: { bookId: bigint; userId: bigint; discountRate: number; price: number; }) {
         let res = CartEntity.create({
             bookId: cartData.bookId,
             userId: cartData.userId,
@@ -31,7 +31,7 @@ export class CartRepository {
         return {success: true, data: res}
     }
 
-    static removeFromCart(id) {
+    static removeFromCart(id: number) {
         let res = CartEntity.destroy({
             where: {id: id}
         })

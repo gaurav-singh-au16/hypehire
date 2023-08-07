@@ -6,11 +6,11 @@ export class BookService {
     return await BookRepository.getAllBooks();
   }
 
-  static async getBookById(id: Number) {
+  static async getBookById(id: number) {
     return await BookRepository.getBookById(id);
   }
 
-  static async addNewBook(bookData) {
+  static async addNewBook(bookData: { title: string; description: string; discountRate: number; price: number; coverImage: string; }) {
     function isDiscountRateValid(discountRate: number): boolean {
       return discountRate >= 1 && discountRate <= 99;
     }
@@ -26,7 +26,7 @@ export class BookService {
     } else if (!bookData.price) {
       return { success: false, message: 'Price Not Present' }
     } else {
-      return await BookRepository.addNewBook(bookData);
+      return BookRepository.addNewBook(bookData);
     }
   }
 

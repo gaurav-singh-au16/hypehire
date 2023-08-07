@@ -21,7 +21,7 @@ export class OrderRepository {
         return getOrder;
     }
 
-    static addNewOrder(orderData) {
+    static addNewOrder(orderData: { cartId: bigint; }) {
         let res = orderEntity.create({
             cartId: orderData.cartId,
             transctionId: uuid(),

@@ -2,11 +2,11 @@ import { CartRepository } from '../repository/cartRepository';
 
 export class CartService {
 
-  static async getUserCart(id) {
+  static async getUserCart(id: number) {
     return await CartRepository.getUserCart(id);
   }
 
-  static async addToCart(cartData) {
+  static async addToCart(cartData: { bookId: bigint; userId: bigint; discountRate: number; price: number; }) {
     if(!cartData.bookId){
         return {success: false, message: 'Book Id Not Present'}
     }else if(!cartData.userId){
@@ -20,7 +20,7 @@ export class CartService {
     }
   }
 
-  static async removeFromCart(id) {
+  static async removeFromCart(id: number) {
     return await CartRepository.removeFromCart(id);
   }
 
