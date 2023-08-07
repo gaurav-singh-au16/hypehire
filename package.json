@@ -4,11 +4,7 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "start": "node dist/src/index.js",
-    "postinstall": "tsc",
-    "watch-node": "nodemon dist/src/index.js",
-    "watch-ts": "tsc -w",
-    "deploy": "git add . && git commit -m Heroku && git push heroku master"
+    "start": "ts-node ./src/index.ts"
   },
   "author": "gaurav singh",
   "license": "ISC",
