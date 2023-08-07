@@ -1,18 +1,13 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "target": "es6",
-        "noImplicitAny": true,
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "resolveJsonModule": true,
-        "outDir": "dist",
-        "baseUrl": ".",
-        "paths": {
-            "*": ["node_modules/*", "src/types/*"]
-        }
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "target": "es6",
+      "moduleResolution": "node",
+      "sourceMap": true,
+      "outDir": "dist",
+      "strict": false,
+      "resolveJsonModule": true,
     },
-    "include": ["./src/**/*"]
-    }
+    "lib": ["es2015"]
+  }
