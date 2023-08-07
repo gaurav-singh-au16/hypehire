@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "node src/index.ts",
+    "start": "node ./src/index.ts",
     "server": "ts-node ./src/index.ts",
     "client": "cd ./ && npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
