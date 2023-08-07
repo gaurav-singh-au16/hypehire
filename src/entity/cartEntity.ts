@@ -50,7 +50,7 @@ CartEntity.init({
         allowNull: false,
     },
     status: {
-        type: DataTypes.TINYINT,
+        type: DataTypes.INTEGER,
         allowNull: false,
         comment: '0--> not yet purchased, 1--> purchased',
         defaultValue: 0
