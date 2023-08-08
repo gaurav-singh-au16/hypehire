@@ -5,7 +5,7 @@ const books: BookEntity[] = [];
 export class BookRepository {
   static getAllBooks() {
     let getBook = BookEntity.findAll({
-      attributes: ["id", "title", "description", "discountRate", "price", "discountRate"]
+      attributes: ["id", "title", "description", "discountRate", "price", "discountRate", "coverImage"]
     })
     return getBook;
   }

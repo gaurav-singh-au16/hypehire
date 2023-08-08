@@ -12,8 +12,6 @@ const port = 3000;
 const CSS_URL =
   "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 
-
-
 app.use(express.json());
 app.use(cors());
 app.use(router);
